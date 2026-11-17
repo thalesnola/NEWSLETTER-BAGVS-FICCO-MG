@@ -1,0 +1,32 @@
+# Boletim diario: configuracao geral. Cada newsletter e um arquivo em edicoes/*.toml.
+
+[geral]
+# Banco (historico de vistos), logs e cache: fora do iCloud.
+dados = "C:/Boletim"
+# Paineis HTML: pasta sincronizada com o celular (ex.: iCloud Drive), abrem offline no app Arquivos.
+saida = "C:/Boletim/paineis"
+fuso = "America/Sao_Paulo"
+# Segredos (SMTP_*, EMAIL_PARA, TELEGRAM_*, IG_*): arquivo .env fora do repo. Nunca no repo.
+env = "C:/Boletim/.env"
+# Quantos dias o historico impede repetir uma noticia ja publicada.
+memoria_dias = 21
+
+[ia]
+# Resumo pelo Claude Code headless (assinatura, sem chave de API). false = so coleta e dedup.
+ativo = true
+modelo = "sonnet"
+timeout_s = 900
+
+[entrega]
+email = true
+telegram = true
+smtp_host = "smtp.mail.me.com"
+smtp_porta = 587
+
+[audio]
+# Resumo falado (edicao com audio = true): voz local Kokoro, pt-BR, nada vai para nuvem.
+python = "C:/Boletim/voz/kokoro/.venv/Scripts/python.exe"
+voz = "pf_dora"        # pt-BR feminina; pm_alex = masculina
+velocidade = 1.05
+kbps = 48              # MP3 mono: ~0,36 MB por minuto (o painel embute em base64, +33%)
+timeout_s = 600

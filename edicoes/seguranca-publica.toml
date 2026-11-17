@@ -1,0 +1,80 @@
+# Edicao: seguranca publica e jurisprudencia penal. So fonte publica.
+# ATENCAO: a busca do Google News publica o termo pesquisado no Google. Nunca colocar aqui
+# nome de alvo, alcunha, numero de processo ou codinome de operacao em curso.
+nome = "seguranca-publica"
+titulo = "Boletim Segurança Pública"
+descricao = "Crime organizado, operações, tribunais superiores e mudanças legais."
+cor = "#0f766e"
+janela_horas = 30
+max_itens = 150
+# Painel: graficos de palavras e instituicoes; emblema e assinatura (identidade.toml fora do repo).
+panorama = true
+panorama_palavras = 20
+identidade = true
+stopwords = ["minas", "gerais", "brasil", "estado", "cidade", "região", "paulo", "janeiro", "federal", "público", "pública"]
+destaques = 5
+# Canal privado do Telegram: id gravado no .env por configurar_canal.cmd (o bot do painel precisa ser admin).
+telegram_chat = "env:TELEGRAM_CANAL_ID"
+# Resumo em audio (voz local) embutido no painel e enviado no Telegram: so eventos criticos de politica
+# criminal, justica criminal, operacoes policiais e seguranca publica. audio_foco troca o recorte.
+audio = true
+audio_minutos = 3
+temas = ["Operações e crime organizado", "STF/STJ e jurisprudência", "Legislação e normas", "Minas Gerais", "Tecnologia e investigação"]
+foco = """
+Leitor: analista de inteligência de força-tarefa de combate ao crime organizado em MG.
+Priorize: operações da PF/PC/MP, tese nova ou mudança de entendimento no STJ/STF (prova digital,
+interceptação, cadeia de custódia, busca e apreensão), lei/norma publicada, fatos de MG.
+Descarte: crime comum isolado sem relação com organização, política partidária, opinião.
+"""
+
+[[fontes]]
+nome = "STJ Notícias"
+url = "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml"
+peso = 3
+
+[[fontes]]
+nome = "ConJur"
+url = "https://conjur.com.br/feed/"
+peso = 2
+palavras = ["penal", "criminal", "prova", "interceptação", "custódia", "STJ", "STF", "organização criminosa", "tráfico", "lavagem"]
+
+[[fontes]]
+nome = "Google News: PF operação"
+url = "https://news.google.com/rss/search?q=%22Pol%C3%ADcia+Federal%22+deflagra+opera%C3%A7%C3%A3o+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+peso = 2
+
+[[fontes]]
+nome = "Google News: crime organizado"
+url = "https://news.google.com/rss/search?q=%22crime+organizado%22+OR+%22organiza%C3%A7%C3%A3o+criminosa%22+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+peso = 2
+
+# (o RSS do g1 MG parou em 2018; a busca abaixo cobre MG pelos veiculos regionais)
+[[fontes]]
+nome = "Google News: MG polícia"
+url = "https://news.google.com/rss/search?q=%28opera%C3%A7%C3%A3o+OR+tr%C3%A1fico+OR+fac%C3%A7%C3%A3o%29+%22Minas+Gerais%22+pol%C3%ADcia+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+peso = 1
+
+# ---------------------------------------------------------------- Instagram (Graph API, token do .env)
+# Perfis conferidos pela Business Discovery em 15/11/2026. Conta pessoal nao e lida pela API.
+[[fontes]]
+tipo = "instagram"
+nome = "Instagram oficial (nacional)"
+peso = 2
+contas = ["policiafederal", "prf", "mjspgov", "senappen", "policiapenalfederal", "abin_oficial",
+          "stjnoticias", "supremotribunalfederal", "cnj_oficial", "mpfederal", "cnmpoficial",
+          "forumseguranca", "pontejornalismo"]
+
+[[fontes]]
+tipo = "instagram"
+nome = "Instagram oficial (MG)"
+peso = 3
+contas = ["pcmg.oficial", "pmmg.oficial", "seguranca.minas", "depenmg", "prf_mg", "mpmg.oficial",
+          "tjmgoficial", "intertvdosvales"]
+
+[[fontes]]
+tipo = "instagram"
+nome = "Instagram imprensa MG"
+peso = 1
+contas = ["itatiaiaoficial", "otempo", "estadodeminas"]
+palavras = ["polícia", "policial", "operação", "preso", "presos", "prisão", "tráfico", "facção", "investigação",
+            "PF", "PC", "PM", "PRF", "Ministério Público", "apreensão", "apreendido", "homicídio", "crime"]

@@ -1,0 +1,7 @@
+# Copie para a pasta de dados (config.toml -> [geral] dados) como identidade.toml.
+# Fica fora do repo: emblemas e assinatura sao da unidade que publica o boletim.
+logo = "C:/Boletim/emblema-esquerda.png"      # ex.: docs/emblema-bagvs-ficco-mg.png
+logo_alt = "FICCO BAGVS/MG"
+logo_direita = "C:/Boletim/emblema-direita.png"
+logo_direita_alt = "Unidade parceira"
+assinatura = "Nome da unidade · contato institucional"

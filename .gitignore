@@ -1,0 +1,24 @@
+# Allowlist: tudo fora, libera item a item. Segredos (.env), banco, logs e paineis vivem fora do repo
+# (pasta de dados fora do repo) e nunca devem entrar.
+/*
+!/.gitignore
+!/.gitattributes
+!/.githooks/
+!/README.md
+!/pyproject.toml
+!/uv.lock
+!/config.toml
+!/identidade.exemplo.toml
+!/VERSION
+!/LICENSE
+!/docs/
+!/*.py
+!/*.cmd
+!/*.ps1
+!/edicoes/
+!/prompts/
+!/tests/
+__pycache__/
+*.pyc
+.env
+*.db

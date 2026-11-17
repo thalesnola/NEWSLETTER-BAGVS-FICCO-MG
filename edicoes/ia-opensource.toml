@@ -1,0 +1,76 @@
+# Edicao: IA e open source. Copie este arquivo para criar outra newsletter.
+nome = "ia-opensource"
+titulo = "Radar IA & Open Source"
+descricao = "Lançamentos de IA, ferramentas open source e releases que importam."
+cor = "#5b5bd6"            # cor de destaque do painel
+janela_horas = 30          # so entram itens publicados nas ultimas N horas
+max_itens = 80             # teto enviado a IA (distribuido entre fontes por peso)
+destaques = 5
+# Temas em que a IA classifica cada item (fora da lista vira "Outros").
+temas = ["Modelos e laboratórios", "Ferramentas e agentes", "Open source e releases", "Mercado e regulação", "Pesquisa"]
+# Pedido editorial: o que importa e o que descartar.
+foco = """
+Leitor: analista técnico que usa Claude Code, Ollama e agentes no dia a dia.
+Priorize: lançamento de modelo, release com mudança relevante, ferramenta nova utilizável, mudança de preço/limite.
+Descarte: opinião sem fato novo, listas genéricas, promoção.
+"""
+# Canais desta edicao (opcional; sem isso usa EMAIL_PARA / TELEGRAM_CHAT_ID do .env).
+# email_para = "a@x.com,b@y.com"
+# telegram_chat = "-100123456789"
+
+[[fontes]]
+nome = "Hacker News (200+ pontos)"
+url = "https://hnrss.org/frontpage?points=200"
+peso = 2
+palavras = ["AI", "LLM", "model", "GPT", "Claude", "Gemini", "open source", "agent", "inference", "Llama", "Qwen"]
+
+[[fontes]]
+nome = "Simon Willison"
+url = "https://simonwillison.net/atom/everything/"
+peso = 3
+
+[[fontes]]
+nome = "Hugging Face Blog"
+url = "https://huggingface.co/blog/feed.xml"
+peso = 2
+
+[[fontes]]
+nome = "OpenAI News"
+url = "https://openai.com/news/rss.xml"
+peso = 2
+
+[[fontes]]
+nome = "Google AI Blog"
+url = "https://blog.google/technology/ai/rss/"
+peso = 2
+
+[[fontes]]
+nome = "GitHub Blog"
+url = "https://github.blog/feed/"
+peso = 1
+
+[[fontes]]
+nome = "TechCrunch IA"
+url = "https://techcrunch.com/category/artificial-intelligence/feed/"
+peso = 1
+
+[[fontes]]
+nome = "The Verge IA"
+url = "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+peso = 1
+
+[[fontes]]
+nome = "Release: Claude Code"
+url = "https://github.com/anthropics/claude-code/releases.atom"
+peso = 3
+
+[[fontes]]
+nome = "Release: Ollama"
+url = "https://github.com/ollama/ollama/releases.atom"
+peso = 3
+
+[[fontes]]
+nome = "Tecnoblog"
+url = "https://tecnoblog.net/feed/"
+peso = 1
+palavras = ["IA", "inteligência artificial", "ChatGPT", "Gemini", "Claude", "OpenAI", "modelo"]

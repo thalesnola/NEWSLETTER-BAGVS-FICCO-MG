@@ -1,0 +1,16 @@
+[project]
+name = "newsletter-bagvs-ficco-mg"
+version = "1.0.0"
+description = "Newsletter diaria configuravel: fontes RSS, dedup, resumo por IA, painel HTML offline, e-mail e Telegram"
+requires-python = ">=3.11"
+dependencies = [
+    "feedparser>=6.0.11",
+    "pillow>=11",
+    "tzdata",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
