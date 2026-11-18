@@ -23,7 +23,7 @@ perfis oficiais no Instagram** (polícias, Ministério Público, tribunais, secr
 único** que abre offline no celular.
 
 O painel traz destaques do dia, filtro por tema, busca, a lista de **todos os links** de cada evento, gráficos das
-**20 palavras mais frequentes** e das **instituições mais presentes**, e pode trazer um resumo em áudio gerado localmente.
+**20 palavras mais frequentes** e das **instituições mais presentes**, e traz um **podcast resumo** em áudio, gerado localmente e enviado no Telegram junto com o HTML.
 A entrega é feita num **canal privado do Telegram** da equipe e por **e-mail**.
 
 ## Como funciona
@@ -35,9 +35,40 @@ A entrega é feita num **canal privado do Telegram** da equipe e por **e-mail**.
 | 3. Eventos | Mesmo link (sem parâmetros de rastreio) ou título parecido viram um evento só, com os outros links guardados; o histórico (SQLite, 21 dias) impede que o que já saiu volte |
 | 4. Resumo + conferência | Uma chamada de IA por edição, com o lote inteiro: descarta o que está fora do foco, junta o mesmo fato com títulos diferentes e resume cada evento com todas as versões. O link sempre vem da coleta, nunca do texto da IA; número do resumo que não está na fonte ganha alerta "conferir na fonte" |
 | 5. Painel offline | HTML único, sem CDN nem fonte web. Filtro por tema funciona só com CSS (abre até no visualizador do app Arquivos e do Telegram no iPhone, que não executam JavaScript) |
-| 6. Entrega | Canal privado do Telegram (bot próprio, administrador do canal), e-mail com o painel anexo e cópia numa pasta sincronizada com o celular |
+| 6. Entrega | Canal privado do Telegram (bot próprio, administrador do canal): painel HTML + podcast resumo em áudio; e-mail com o painel anexo e cópia numa pasta sincronizada com o celular |
 
 O Agendador do Windows roda tudo às 05:30; às 07:30, uma vigia avisa se o painel do dia não saiu.
+
+## Fontes pesquisadas (edição `seguranca-publica`)
+
+Tudo que o boletim lê vem de fonte pública, listada em `edicoes/seguranca-publica.toml` (peso 1–3 define a prioridade):
+
+| Tipo | Fonte | Peso |
+|---|---|---|
+| RSS direto | STJ Notícias | 3 |
+| RSS direto | ConJur (filtrado por palavras: penal, prova, interceptação, custódia, STJ, STF, organização criminosa, tráfico, lavagem) | 2 |
+| Google News | "Polícia Federal" + deflagra operação (24 h) | 2 |
+| Google News | "crime organizado" OR "organização criminosa" (24 h) | 2 |
+| Google News | (operação OR tráfico OR facção) + "Minas Gerais" + polícia (24 h) | 1 |
+| Instagram oficial, nacional | @policiafederal, @prf, @mjspgov, @senappen, @policiapenalfederal, @abin_oficial, @stjnoticias, @supremotribunalfederal, @cnj_oficial, @mpfederal, @cnmpoficial, @forumseguranca, @pontejornalismo | 2 |
+| Instagram oficial, MG | @pcmg.oficial, @pmmg.oficial, @seguranca.minas, @depenmg, @prf_mg, @mpmg.oficial, @tjmgoficial, @intertvdosvales | 3 |
+| Instagram imprensa MG | @itatiaiaoficial, @otempo, @estadodeminas (só posts com termos de segurança pública) | 1 |
+
+Instagram é lido pela API oficial da Meta (Business Discovery): só a legenda entra. Cada evento do painel mostra o veículo
+de origem e todos os links que o citam, e o rodapé lista as fontes consultadas e as que falharam no dia.
+A edição `ia-opensource` (Hacker News, Simon Willison, Hugging Face, OpenAI e releases do GitHub) segue o mesmo formato.
+
+## Podcast resumo (áudio no Telegram)
+
+Com `audio = true` na edição, a mesma chamada de IA que resume o dia escreve também um **roteiro de ~3 minutos** só com os
+eventos críticos de política criminal, justiça criminal, operações policiais e segurança pública. Uma voz **local**
+(Kokoro, pt-BR; o texto não vai a serviço de voz na nuvem) transforma o roteiro em MP3 mono de 48 kbps. O podcast:
+
+- vai **embutido no painel HTML** (player que toca offline, roteiro em "Ler o roteiro");
+- é salvo ao lado do HTML;
+- é enviado **no canal do Telegram junto com o HTML**, como faixa de áudio (`sendAudio`) logo após o painel.
+
+Falha na voz ou no envio do áudio não derruba o boletim: o painel sai normalmente, com aviso.
 
 ## Uso
 

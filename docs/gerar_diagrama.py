@@ -130,8 +130,8 @@ conferidos e entregues como painel HTML offline no canal privado do Telegram e p
         (2, col[1], l1, "Coleta", ["Janela das últimas 30 h", "Palavras-chave por fonte", "Falha de uma fonte não para as outras"], VIOLETA),
         (3, col[2], l1, "Eventos", ["Mesmo link ou título parecido = 1 evento", "Histórico: o que já saiu não volta", "A IA junta o mesmo fato com outro título"], AZUL),
         (4, col[2], l2, "Resumo + conferência", ["IA resume o evento com todas as versões", "Link sempre vem da fonte, nunca da IA", "Número sem fonte ganha alerta"], AZUL),
-        (5, col[1], l2, "Painel offline", ["Destaques, filtro por tema e busca", "20 palavras e instituições mais citadas", "Emblemas, assinatura e áudio do dia"], VERDE),
-        (6, col[0], l2, "Entrega", ["Canal privado no Telegram", "E-mail com o painel anexo", "Cópia na pasta sincronizada do celular"], VERDE),
+        (5, col[1], l2, "Painel offline", ["Destaques, filtro por tema e busca", "20 palavras e instituições mais citadas", "Emblemas, assinatura e podcast do dia"], VERDE),
+        (6, col[0], l2, "Entrega", ["Telegram: painel HTML + podcast", "E-mail com o painel anexo", "Cópia na pasta sincronizada do celular"], VERDE),
     ]
     # conectores (atras dos cartoes)
     con = [
